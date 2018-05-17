@@ -87,7 +87,7 @@ Insert into Staff values('STF013', 'Tamara', 'Jalan Shydan', '1998/12/03', '0877
 Insert into Staff values('STF014', 'Kaleb', 'Jalan Keluarga', '1992/07/29', '08773451235', 'kaleb@mail.com', 2500000, 'Beverages')
 Insert into Staff values('STF015', 'Bianka', 'Jalan Salak', '1993/06/09', '08770948239', 'bianka@mail.com', 2300000, 'Main Curse')
 
-Insert
+Insert into Vendor values('VEN001', 
 
 
 select * from Staff 
