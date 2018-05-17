@@ -1,4 +1,4 @@
-Create Table staff (
+Create Table Staff (
 	StaffID char(9) primary key not null check(StaffID like 'STF[0-9][0-9][0-9]'),
 	StaffName varchar(30) not null,
 	StaffAddress varchar(30) not null,
@@ -10,7 +10,7 @@ Create Table staff (
 )
 
 
-Create table vendor (
+Create table Vendor (
 	VendorID char(9) primary key not null check(VendorID like 'VEN[0-9][0-9][0-9]'),
 	VendorName varchar(30) not null,
 	VendorAddress varchar(30) not null,
@@ -18,7 +18,7 @@ Create table vendor (
 	VendorPhoneNumber varchar(30) not null
 )
 
-Create table ingredient(
+Create table Ingredient(
 	IngredientID char(9) primary key not null check(IngredientID like 'ING[0-9][0-9][0-9]'),
 	IngredientName varchar(30) not null,
 	IngredientPrice int not null,
@@ -26,26 +26,26 @@ Create table ingredient(
 
 Create Table purchaseTransaction (
 	PurchaseTransactionID char(9) primary key not null check(PurchaseTransactionID like 'PUR[0-9][0-9][0-9]'),
-	StaffID char(9) not null foreign key(StaffID) references staff(StaffID),
-	IngredientID char(9) not null foreign key(IngredientID) references ingredient(IngredientID),
-	VendorID char(9) not null foreign key(VendorID) references vendor(VendorID),
+	StaffID char(9) not null foreign key(StaffID) references Staff(StaffID),
+	IngredientID char(9) not null foreign key(IngredientID) references Ingredient(IngredientID),
+	VendorID char(9) not null foreign key(VendorID) references Vendor(VendorID),
 	TransactionDate date not null,
 	QuantityIngredient int not null check(QuantityIngredient > 0)
 )
 
-Create table productType(
+Create table ProductType(
 	ProductTypeData char(9) not null primary key check(ProductTypeData like 'TYP[0-9][0-9][0-9]'),
 	ProductTypeDataName varchar(30) not null check(ProductTypeDataName = 'Dessert' or ProductTypeDataName='Main Course' or ProductTypeDataName='Beverages' or ProductTypeDataName='Appetizer'),
 )
 
-Create table product(
+Create table Product(
 	ProductID char(9)  not null primary key check(ProductID like 'PRO[0-9][0-9][0-9]'),
 	ProductName varchar(30) not null,
 	ProductPrice int not null,
-	ProductTypeData char(9) not null foreign key(ProductTypeData) references productType(ProductTypeData)
+	ProductTypeData char(9) not null foreign key(ProductTypeData) references ProductType(ProductTypeData)
 )
 
-Create table customer(
+Create table Customer(
 	CustomerID char(9) primary key not null check(CustomerId like 'CUS[0-9][0-9][0-9]'),
 	CustomerAddress varchar(30) not null,
 	CustomerDOB date not null,
@@ -53,11 +53,11 @@ Create table customer(
 	CustomerEmail varchar(30) check(CustomerEmail like '%@%' and CustomerEmail like '%.co.id')
 )
 
-Create table salesTransaction (
+Create table SalesTransaction (
 SalesTransactionID char(9) primary key not null check(SalesTransactionId like 'SAL[0-9][0-9][0-9]'),
-StaffID char(9) not null foreign key(StaffID) references staff(StaffID),
-ProductID char(9) not null foreign key(ProductID) references product(ProductID),
-CustomerID char(9) not null foreign key(CustomerId) references customer(CustomerID),
+StaffID char(9) not null foreign key(StaffID) references Staff(StaffID),
+ProductID char(9) not null foreign key(ProductID) references Product(ProductID),
+CustomerID char(9) not null foreign key(CustomerId) references Customer(CustomerID),
 TransactionDate date not null,
 QuantityProduct int not null check(QuantityProduct > 0)
 )
@@ -86,6 +86,8 @@ Insert into staff values('STF012', 'Alvin', 'Jalan Rakyat', '1989/07/09', '08776
 Insert into staff values('STF013', 'Tamara', 'Jalan Shydan', '1998/12/03', '08773425463', 'tamara@mail.com', 2500000, 'Beverages')
 Insert into staff values('STF014', 'Kaleb', 'Jalan Keluarga', '1992/07/29', '08773451235', 'kaleb@mail.com', 2500000, 'Beverages')
 Insert into staff values('STF015', 'Bianka', 'Jalan Salak', '1993/06/09', '08770948239', 'bianka@mail.com', 2300000, 'Main Curse')
+
+
 
 
 select * from staff 
