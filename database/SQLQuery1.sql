@@ -107,7 +107,35 @@ Insert into Vendor values('VEN013', 'Cahaya Mulya Mandiri', 'Jl Papanggungan 36'
 Insert into Vendor values('VEN014', 'CV Cemerlang Abadi', 'Jl Zamrud 11', 'Abadijaya@mail.com', '08177307635')
 Insert into Vendor values('VEN015', 'PT Di-Marta', 'Jl Rebana 2', 'Martadinata@mail.com', '08177305121')
 
+go
+create procedure insertingredient
+@ingredientid varchar(10),
+@ingredientname varchar(30),
+@ingredientprice int
+as
+	begin
+		insert into Ingredient values(@ingredientid,@ingredientname,@ingredientprice)
 
+		print 'success'
+	end
+
+	exec insertingredient 'ING001','breadcrumbs',30000
+	exec insertingredient 'ING002','bun',10000
+	exec insertingredient 'ING003','chicken breast',25000
+	exec insertingredient 'ING004','beef',40000
+	exec insertingredient 'ING005','egg',10000
+	exec insertingredient 'ING006','onion',5000
+	exec insertingredient 'ING007','milk',8000
+	exec insertingredient 'ING008','cabbage',10000
+	exec insertingredient 'ING009','tomato',3000
+	exec insertingredient 'ING010','chili',3000
+	exec insertingredient 'ING011','tomato sauce',2500
+	exec insertingredient 'ING012','chili sauce',2500
+	exec insertingredient 'ING013','flour',5000
+	exec insertingredient 'ING014','cream',4000
+	exec insertingredient 'ING015','Sesame seed',1500
+
+	select * from Ingredient
 
 
 select * from Staff 
