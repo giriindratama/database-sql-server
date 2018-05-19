@@ -135,6 +135,69 @@ as
 	exec insertingredient 'ING014','cream',4000
 	exec insertingredient 'ING015','Sesame seed',1500
 
+insert into purchaseTransaction values('PUR001', ( select StaffID from Staff Where StaffID = 'STF001'), 
+	(select IngredientID from Ingredient Where IngredientID = 'ING001'),
+	(select VendorID from Vendor Where VendorID = 'VEN001'), '2018/01/01', 10 ) 
+insert into purchaseTransaction values('PUR002', ( select StaffID from Staff Where StaffID = 'STF001'), 
+	(select IngredientID from Ingredient Where IngredientID = 'ING001'),
+	(select VendorID from Vendor Where VendorID = 'VEN001'), '2018/01/01', 10 ) 
+insert into purchaseTransaction values('PUR003', ( select StaffID from Staff Where StaffID = 'STF001'), 
+	(select IngredientID from Ingredient Where IngredientID = 'ING001'),
+	(select VendorID from Vendor Where VendorID = 'VEN001'), '2018/01/01', 10 ) 
+insert into purchaseTransaction values('PUR004', ( select StaffID from Staff Where StaffID = 'STF001'), 
+	(select IngredientID from Ingredient Where IngredientID = 'ING001'),
+	(select VendorID from Vendor Where VendorID = 'VEN001'), '2018/01/01', 10 ) 
+insert into purchaseTransaction values('PUR005', ( select StaffID from Staff Where StaffID = 'STF001'), 
+	(select IngredientID from Ingredient Where IngredientID = 'ING001'),
+	(select VendorID from Vendor Where VendorID = 'VEN001'), '2018/01/01', 10 ) 
+insert into purchaseTransaction values('PUR006', ( select StaffID from Staff Where StaffID = 'STF001'), 
+	(select IngredientID from Ingredient Where IngredientID = 'ING001'),
+	(select VendorID from Vendor Where VendorID = 'VEN001'), '2018/01/01', 10 ) 
+insert into purchaseTransaction values('PUR007', ( select StaffID from Staff Where StaffID = 'STF001'), 
+	(select IngredientID from Ingredient Where IngredientID = 'ING001'),
+	(select VendorID from Vendor Where VendorID = 'VEN001'), '2018/01/01', 10 ) 
+insert into purchaseTransaction values('PUR008', ( select StaffID from Staff Where StaffID = 'STF001'), 
+	(select IngredientID from Ingredient Where IngredientID = 'ING001'),
+	(select VendorID from Vendor Where VendorID = 'VEN001'), '2018/01/01', 10 ) 
+insert into purchaseTransaction values('PUR009', ( select StaffID from Staff Where StaffID = 'STF001'), 
+	(select IngredientID from Ingredient Where IngredientID = 'ING001'),
+	(select VendorID from Vendor Where VendorID = 'VEN001'), '2018/01/01', 10 ) 
+insert into purchaseTransaction values('PUR010', ( select StaffID from Staff Where StaffID = 'STF001'), 
+	(select IngredientID from Ingredient Where IngredientID = 'ING001'),
+	(select VendorID from Vendor Where VendorID = 'VEN001'), '2018/01/01', 10 ) 
+insert into purchaseTransaction values('PUR011', ( select StaffID from Staff Where StaffID = 'STF001'), 
+	(select IngredientID from Ingredient Where IngredientID = 'ING001'),
+	(select VendorID from Vendor Where VendorID = 'VEN001'), '2018/01/01', 10 ) 
+insert into purchaseTransaction values('PUR012', ( select StaffID from Staff Where StaffID = 'STF001'), 
+	(select IngredientID from Ingredient Where IngredientID = 'ING001'),
+	(select VendorID from Vendor Where VendorID = 'VEN001'), '2018/01/01', 10 ) 
+insert into purchaseTransaction values('PUR013', ( select StaffID from Staff Where StaffID = 'STF001'), 
+	(select IngredientID from Ingredient Where IngredientID = 'ING001'),
+	(select VendorID from Vendor Where VendorID = 'VEN001'), '2018/01/01', 10 ) 
+insert into purchaseTransaction values('PUR014', ( select StaffID from Staff Where StaffID = 'STF001'), 
+	(select IngredientID from Ingredient Where IngredientID = 'ING001'),
+	(select VendorID from Vendor Where VendorID = 'VEN001'), '2018/01/01', 10 ) 
+insert into purchaseTransaction values('PUR015', ( select StaffID from Staff Where StaffID = 'STF001'), 
+	(select IngredientID from Ingredient Where IngredientID = 'ING001'),
+	(select VendorID from Vendor Where VendorID = 'VEN001'), '2018/01/01', 10 ) 
+insert into purchaseTransaction values('PUR016', ( select StaffID from Staff Where StaffID = 'STF001'), 
+	(select IngredientID from Ingredient Where IngredientID = 'ING001'),
+	(select VendorID from Vendor Where VendorID = 'VEN001'), '2018/01/01', 10 ) 
+insert into purchaseTransaction values('PUR017', ( select StaffID from Staff Where StaffID = 'STF001'), 
+	(select IngredientID from Ingredient Where IngredientID = 'ING001'),
+	(select VendorID from Vendor Where VendorID = 'VEN001'), '2018/01/01', 10 ) 
+insert into purchaseTransaction values('PUR018', ( select StaffID from Staff Where StaffID = 'STF001'), 
+	(select IngredientID from Ingredient Where IngredientID = 'ING001'),
+	(select VendorID from Vendor Where VendorID = 'VEN001'), '2018/01/01', 10 ) 
+insert into purchaseTransaction values('PUR019', ( select StaffID from Staff Where StaffID = 'STF001'), 
+	(select IngredientID from Ingredient Where IngredientID = 'ING001'),
+	(select VendorID from Vendor Where VendorID = 'VEN001'), '2018/01/01', 10 ) 
+insert into purchaseTransaction values('PUR020', ( select StaffID from Staff Where StaffID = 'STF001'), 
+	(select IngredientID from Ingredient Where IngredientID = 'ING001'),
+	(select VendorID from Vendor Where VendorID = 'VEN001'), '2018/01/01', 10 ) 
+	
+	delete from purchaseTransaction where PurchaseTransactionID = 'PUR001'
+	select * from purchaseTransaction
 	select * from Ingredient
 
 
