@@ -48,6 +48,7 @@ Create table Product(
 Create table Customer(
 	CustomerID char(9) primary key not null check(CustomerId like 'CUS[0-9][0-9][0-9]'),
 	CustomerAddress varchar(30) not null,
+	CustomeName varchar(30),
 	CustomerDOB date not null,
 	CustomerPhone varchar(30) check(LEN(CustomerPhone) > 10),
 	CustomerEmail varchar(30) check(CustomerEmail like '%@%' and CustomerEmail like '%.co.id')
@@ -63,7 +64,7 @@ QuantityProduct int not null check(QuantityProduct > 0)
 )
 
 
- 
+ -- insert Staff
 Insert into Staff values('STF001', 'Giri', 'Jalan U', '1997/02/21', '0877328132', 'made@mail.com', 2000000, 'Desser')
 Insert into Staff values('STF002', 'Patrick', 'Jalan Samping', '1992/11/01', '0877234158', 'patrick@mail.com', 2300000, 'Main Curse')
 Insert into Staff values('STF003', 'Tommy', 'Jalan Sandung', '1990/12/21', '0877612456', 'tommy@mail.com', 3600000, 'Finnacial Officer')
@@ -80,6 +81,25 @@ Insert into Staff values('STF013', 'Tamara', 'Jalan Shydan', '1998/12/03', '0877
 Insert into Staff values('STF014', 'Kaleb', 'Jalan Keluarga', '1992/07/29', '08773451235', 'kaleb@mail.com', 2500000, 'Beverages')
 Insert into Staff values('STF015', 'Bianka', 'Jalan Salak', '1993/06/09', '08770948239', 'bianka@mail.com', 2300000, 'Main Curse')
 
+--insert Vendor
+Insert into Vendor values('VEN001', 'Bintang21', 'Jalan Menteng Raya no 33', 'bintang21@mail.com', '08173849383')
+Insert into Vendor values('VEN002', 'Diantara', 'JL. Batas Dukusari No 5', 'diantara@mail.com', '08173829345')
+Insert into Vendor values('VEN003', 'Mandailing', 'Ruko Permai No 3 Block E', 'mandailing@mail.com', '08183720912')
+Insert into Vendor values('VEN004', 'PT Gitaswara Indonesia', 'Jalan Jend Sudirman no 9 ', 'gitaswaraIndo@mail.com', '0814418537')
+Insert into Vendor values('VEN005', 'PT Gubah Bumi Selaras', 'Jl Jend Sudirman Kompl no 24C', 'bumiGubah@mail.com', '08177645623')
+Insert into Vendor values('VEN006', 'PT Pangansari Utama Food', 'Jl Jend Sudirman 880', 'Utamafood@mail.com', '0817761551')
+Insert into Vendor values('VEN007', 'PT Kiat Sukses', 'Jl Syarifudin Yose 5', 'suksesKia@mail.com', '0817876723')
+Insert into Vendor values('VEN008', 'PT Resa Kalimantan Sakti', 'Jl Letjen Suprapto 1', 'Sakti004@mail.com', '0817424386')
+Insert into Vendor values('VEN009', 'PT Tata Adhis Thana', 'Jl Mulawarman 12', 'tata_adhis@mail.com', '0817743138')
+Insert into Vendor values('VEN010', 'Aneka Makmur', 'Jl Peta Lingkar no 41', 'aneka_makmur49@mail.com', '08176035001')
+Insert into Vendor values('VEN011', 'PT Arta Boga Cemerlang', 'Jl Soekarno Hatta 70', 'cermelang33@mail.com', '08177300791')
+Insert into Vendor values('VEN012', 'PD Betani', 'Jl Kopo 104', 'betani@mail.com', '08176010173')
+Insert into Vendor values('VEN013', 'Cahaya Mulya Mandiri', 'Jl Papanggungan 36', 'mulyaMandiri@mail.com', '08177300203')
+Insert into Vendor values('VEN014', 'CV Cemerlang Abadi', 'Jl Zamrud 11', 'Abadijaya@mail.com', '08177307635')
+Insert into Vendor values('VEN015', 'PT Di-Marta', 'Jl Rebana 2', 'Martadinata@mail.com', '08177305121')
+select * from Vendor
+
+--insert Ingredient
 go
 create procedure insertingredient
 @ingredientid varchar(10),
@@ -112,16 +132,9 @@ as
 
 
 	
-
-	Create table Customer(
-	CustomerID char(9) primary key not null check(CustomerId like 'CUS[0-9][0-9][0-9]'),
-	CustomerAddress varchar(30) not null,
-	CustomeName varchar(30),
-	CustomerDOB date not null,
-	CustomerPhone varchar(30) check(LEN(CustomerPhone) > 10),
-	CustomerEmail varchar(30) check(CustomerEmail like '%@%' and CustomerEmail like '%.co.id')
-)
-
+-- 
+	
+-- insert Customer
 go
 	create procedure insertingcustomer
 @custid varchar(10),
@@ -155,6 +168,8 @@ as
 
 	select * from Customer
 
+
+-- insert productType
 	go
 	create procedure insertproductype
 	@productid char(9),
@@ -171,7 +186,9 @@ as
 		exec insertproductype 'TYP003','Beverages'
 		exec insertproductype 'TYP004','Appetizer'
 		
-		
+		select * from ProductType
+
+-- insert Type Product		
 	select * from ProductType
 
 	go
@@ -189,72 +206,8 @@ as
 
 	exec insertproduct 'PRO001','burger',13000,'TYP001'
 
-	insert into purchaseTransaction values('PUR001', ( select StaffID from Staff Where StaffID = 'STF001'), 
-	(select IngredientID from Ingredient Where IngredientID = 'ING001'),
-	(select VendorID from Vendor Where VendorID = 'VEN001'), '2018/01/05', 10 ) 
-insert into purchaseTransaction values('PUR002', ( select StaffID from Staff Where StaffID = 'STF002'), 
-	(select IngredientID from Ingredient Where IngredientID = 'ING002'),
-	(select VendorID from Vendor Where VendorID = 'VEN002'), '2018/01/10', 10 ) 
-insert into purchaseTransaction values('PUR003', ( select StaffID from Staff Where StaffID = 'STF003'), 
-	(select IngredientID from Ingredient Where IngredientID = 'ING003'),
-	(select VendorID from Vendor Where VendorID = 'VEN003'), '2018/02/02', 10 ) 
-insert into purchaseTransaction values('PUR004', ( select StaffID from Staff Where StaffID = 'STF004'), 
-	(select IngredientID from Ingredient Where IngredientID = 'ING004'),
-	(select VendorID from Vendor Where VendorID = 'VEN004'), '2018/01/05', 10 ) 
-insert into purchaseTransaction values('PUR005', ( select StaffID from Staff Where StaffID = 'STF005'), 
-	(select IngredientID from Ingredient Where IngredientID = 'ING005'),
-	(select VendorID from Vendor Where VendorID = 'VEN005'), '2018/01/06', 10 ) 
-insert into purchaseTransaction values('PUR006', ( select StaffID from Staff Where StaffID = 'STF006'), 
-	(select IngredientID from Ingredient Where IngredientID = 'ING006'),
-	(select VendorID from Vendor Where VendorID = 'VEN006'), '2018/01/07', 10 ) 
-insert into purchaseTransaction values('PUR007', ( select StaffID from Staff Where StaffID = 'STF007'), 
-	(select IngredientID from Ingredient Where IngredientID = 'ING07'),
-	(select VendorID from Vendor Where VendorID = 'VEN007'), '2018/01/11', 10 ) 
-insert into purchaseTransaction values('PUR008', ( select StaffID from Staff Where StaffID = 'STF008'), 
-	(select IngredientID from Ingredient Where IngredientID = 'ING008'),
-	(select VendorID from Vendor Where VendorID = 'VEN008'), '2018/01/13', 10 ) 
-insert into purchaseTransaction values('PUR009', ( select StaffID from Staff Where StaffID = 'STF009'), 
-	(select IngredientID from Ingredient Where IngredientID = 'ING009'),
-	(select VendorID from Vendor Where VendorID = 'VEN009'), '2018/01/15', 10 ) 
-insert into purchaseTransaction values('PUR010', ( select StaffID from Staff Where StaffID = 'STF010'), 
-	(select IngredientID from Ingredient Where IngredientID = 'ING010'),
-	(select VendorID from Vendor Where VendorID = 'VEN010'), '2018/01/17', 10 ) 
-insert into purchaseTransaction values('PUR011', ( select StaffID from Staff Where StaffID = 'STF011'), 
-	(select IngredientID from Ingredient Where IngredientID = 'ING011'),
-	(select VendorID from Vendor Where VendorID = 'VEN011'), '2018/01/19', 10 ) 
-insert into purchaseTransaction values('PUR012', ( select StaffID from Staff Where StaffID = 'STF012'), 
-	(select IngredientID from Ingredient Where IngredientID = 'ING012'),
-	(select VendorID from Vendor Where VendorID = 'VEN012'), '2018/01/20', 10 ) 
-insert into purchaseTransaction values('PUR013', ( select StaffID from Staff Where StaffID = 'STF013'), 
-	(select IngredientID from Ingredient Where IngredientID = 'ING013'),
-	(select VendorID from Vendor Where VendorID = 'VEN013'), '2018/01/21', 10 ) 
-insert into purchaseTransaction values('PUR014', ( select StaffID from Staff Where StaffID = 'STF014'), 
-	(select IngredientID from Ingredient Where IngredientID = 'ING014'),
-	(select VendorID from Vendor Where VendorID = 'VEN014'), '2018/01/24', 10 ) 
-insert into purchaseTransaction values('PUR015', ( select StaffID from Staff Where StaffID = 'STF015'), 
-	(select IngredientID from Ingredient Where IngredientID = 'ING015'),
-	(select VendorID from Vendor Where VendorID = 'VEN015'), '2018/01/25', 10 ) 
-insert into purchaseTransaction values('PUR016', ( select StaffID from Staff Where StaffID = 'STF004'), 
-	(select IngredientID from Ingredient Where IngredientID = 'ING004'),
-	(select VendorID from Vendor Where VendorID = 'VEN01'), '2018/01/26', 10 ) 
-insert into purchaseTransaction values('PUR017', ( select StaffID from Staff Where StaffID = 'STF008'), 
-	(select IngredientID from Ingredient Where IngredientID = 'ING001'),
-	(select VendorID from Vendor Where VendorID = 'VEN004'), '2018/01/27', 10 ) 
-insert into purchaseTransaction values('PUR018', ( select StaffID from Staff Where StaffID = 'STF001'), 
-	(select IngredientID from Ingredient Where IngredientID = 'ING013'),
-	(select VendorID from Vendor Where VendorID = 'VEN006'), '2018/01/28', 10 ) 
-insert into purchaseTransaction values('PUR019', ( select StaffID from Staff Where StaffID = 'STF014'), 
-	(select IngredientID from Ingredient Where IngredientID = 'ING006'),
-	(select VendorID from Vendor Where VendorID = 'VEN012'), '2018/01/29', 10 ) 
-insert into purchaseTransaction values('PUR020', ( select StaffID from Staff Where StaffID = 'STF007'), 
-	(select IngredientID from Ingredient Where IngredientID = 'ING009'),
-	(select VendorID from Vendor Where VendorID = 'VEN015'), '2018/01/30', 10 ) 
-	
-	delete from purchaseTransaction where PurchaseTransactionID = 'PUR001'
-	select * from purchaseTransaction
-	select * from Ingredient
 
-
+-- insert Product
 	Insert Into Product values('PRO001', 'burger', 130000, (Select ProductTypeData from ProductType where ProductTypeData = 'TYP002'))
 	Insert Into Product values('PRO002', 'Spicy Chicken', 130000, (Select ProductTypeData from ProductType where ProductTypeData = 'TYP002'))
 	Insert Into Product values('PRO003', 'Fried Chicken', 100000, (Select ProductTypeData from ProductType where ProductTypeData = 'TYP002'))
@@ -271,11 +224,133 @@ insert into purchaseTransaction values('PUR020', ( select StaffID from Staff Whe
 	Insert Into Product values('PRO014', 'Cola', 130000, (Select ProductTypeData from ProductType where ProductTypeData = 'TYP003'))
 	Insert Into Product values('PRO015', 'melted cake', 130000, (Select ProductTypeData from ProductType where ProductTypeData = 'TYP004'))
 
+	select * from Product
 
-
-
-	select * from Product p join ProductType pt on p.ProductTypeData = pt.ProductTypeData
-
-		--samain gitclone
+	--insert salestransaction
+	Insert Into SalesTransaction values('SAL001',(Select StaffID from Staff where StaffID = 'STF014'),(Select ProductID from Product where ProductID = 'PRO002'),
+	(Select CustomerID from Customer where CustomerID = 'CUS001'),'2018/03/22',3)
+	Insert Into SalesTransaction values('SAL002',(Select StaffID from Staff where StaffID = 'STF001'),(Select ProductID from Product where ProductID = 'PRO001'),
+	(Select CustomerID from Customer where CustomerID = 'CUS002'),'2018/03/27',3)
+	Insert Into SalesTransaction values('SAL003',(Select StaffID from Staff where StaffID = 'STF014'),(Select ProductID from Product where ProductID = 'PRO003'),
+	(Select CustomerID from Customer where CustomerID = 'CUS003'),'2018/03/21',3)
+	Insert Into SalesTransaction values('SAL004',(Select StaffID from Staff where StaffID = 'STF014'),(Select ProductID from Product where ProductID = 'PRO004'),
+	(Select CustomerID from Customer where CustomerID = 'CUS004'),'2018/03/19',3)
+	Insert Into SalesTransaction values('SAL005',(Select StaffID from Staff where StaffID = 'STF014'),(Select ProductID from Product where ProductID = 'PRO005'),
+	(Select CustomerID from Customer where CustomerID = 'CUS005'),'2018/01/09',1)
+	Insert Into SalesTransaction values('SAL006',(Select StaffID from Staff where StaffID = 'STF014'),(Select ProductID from Product where ProductID = 'PRO006'),
+	(Select CustomerID from Customer where CustomerID = 'CUS006'),'2018/02/12',2)
+	Insert Into SalesTransaction values('SAL007',(Select StaffID from Staff where StaffID = 'STF014'),(Select ProductID from Product where ProductID = 'PRO007'),
+	(Select CustomerID from Customer where CustomerID = 'CUS007'),'2018/06/12',2)
+	Insert Into SalesTransaction values('SAL008',(Select StaffID from Staff where StaffID = 'STF014'),(Select ProductID from Product where ProductID = 'PRO008'),
+	(Select CustomerID from Customer where CustomerID = 'CUS008'),'2018/04/12',2)
+	Insert Into SalesTransaction values('SAL009',(Select StaffID from Staff where StaffID = 'STF014'),(Select ProductID from Product where ProductID = 'PRO009'),
+	(Select CustomerID from Customer where CustomerID = 'CUS009'),'2018/03/15',5)
+	Insert Into SalesTransaction values('SAL010',(Select StaffID from Staff where StaffID = 'STF014'),(Select ProductID from Product where ProductID = 'PRO010'),
+	(Select CustomerID from Customer where CustomerID = 'CUS010'),'2018/03/14',1)
+	Insert Into SalesTransaction values('SAL011',(Select StaffID from Staff where StaffID = 'STF014'),(Select ProductID from Product where ProductID = 'PRO011'),
+	(Select CustomerID from Customer where CustomerID = 'CUS011'),'2018/03/09',1)
+	Insert Into SalesTransaction values('SAL012',(Select StaffID from Staff where StaffID = 'STF014'),(Select ProductID from Product where ProductID = 'PRO012'),
+	(Select CustomerID from Customer where CustomerID = 'CUS012'),'2018/03/01',2)
+	Insert Into SalesTransaction values('SAL013',(Select StaffID from Staff where StaffID = 'STF014'),(Select ProductID from Product where ProductID = 'PRO013'),
+	(Select CustomerID from Customer where CustomerID = 'CUS013'),'2018/03/02',4)
+	Insert Into SalesTransaction values('SAL014',(Select StaffID from Staff where StaffID = 'STF014'),(Select ProductID from Product where ProductID = 'PRO014'),
+	(Select CustomerID from Customer where CustomerID = 'CUS014'),'2018/03/03',5)
+	Insert Into SalesTransaction values('SAL015',(Select StaffID from Staff where StaffID = 'STF014'),(Select ProductID from Product where ProductID = 'PRO015'),
+	(Select CustomerID from Customer where CustomerID = 'CUS015'),'2018/03/05',1)
 	
+	select * from Customer
+
+-- insert purchaseTransaction
+	insert into purchaseTransaction values('PUR001', ( select StaffID from Staff Where StaffID = 'STF001'), 
+	(select IngredientID from Ingredient Where IngredientID = 'ING001'),
+	(select VendorID from Vendor Where VendorID = 'VEN001'), '2018/01/05', 6 ) 
+insert into purchaseTransaction values('PUR002', ( select StaffID from Staff Where StaffID = 'STF002'), 
+	(select IngredientID from Ingredient Where IngredientID = 'ING002'),
+	(select VendorID from Vendor Where VendorID = 'VEN002'), '2018/01/10', 2 ) 
+insert into purchaseTransaction values('PUR003', ( select StaffID from Staff Where StaffID = 'STF003'), 
+	(select IngredientID from Ingredient Where IngredientID = 'ING003'),
+	(select VendorID from Vendor Where VendorID = 'VEN003'), '2018/02/02', 7 ) 
+insert into purchaseTransaction values('PUR004', ( select StaffID from Staff Where StaffID = 'STF004'), 
+	(select IngredientID from Ingredient Where IngredientID = 'ING004'),
+	(select VendorID from Vendor Where VendorID = 'VEN004'), '2018/01/05', 12 ) 
+insert into purchaseTransaction values('PUR005', ( select StaffID from Staff Where StaffID = 'STF005'), 
+	(select IngredientID from Ingredient Where IngredientID = 'ING005'),
+	(select VendorID from Vendor Where VendorID = 'VEN005'), '2018/01/06', 10 ) 
+insert into purchaseTransaction values('PUR006', ( select StaffID from Staff Where StaffID = 'STF006'), 
+	(select IngredientID from Ingredient Where IngredientID = 'ING006'),
+	(select VendorID from Vendor Where VendorID = 'VEN006'), '2018/01/07', 9 ) 
+insert into purchaseTransaction values('PUR007', ( select StaffID from Staff Where StaffID = 'STF007'), 
+	(select IngredientID from Ingredient Where IngredientID = 'ING007'),
+	(select VendorID from Vendor Where VendorID = 'VEN007'), '2018/01/11', 10 ) 
+insert into purchaseTransaction values('PUR008', ( select StaffID from Staff Where StaffID = 'STF008'), 
+	(select IngredientID from Ingredient Where IngredientID = 'ING008'),
+	(select VendorID from Vendor Where VendorID = 'VEN008'), '2018/01/13', 12 ) 
+insert into purchaseTransaction values('PUR009', ( select StaffID from Staff Where StaffID = 'STF009'), 
+	(select IngredientID from Ingredient Where IngredientID = 'ING009'),
+	(select VendorID from Vendor Where VendorID = 'VEN009'), '2018/01/15', 20 ) 
+insert into purchaseTransaction values('PUR010', ( select StaffID from Staff Where StaffID = 'STF010'), 
+	(select IngredientID from Ingredient Where IngredientID = 'ING010'),
+	(select VendorID from Vendor Where VendorID = 'VEN010'), '2018/01/17', 19 ) 
+insert into purchaseTransaction values('PUR011', ( select StaffID from Staff Where StaffID = 'STF011'), 
+	(select IngredientID from Ingredient Where IngredientID = 'ING011'),
+	(select VendorID from Vendor Where VendorID = 'VEN011'), '2018/01/19', 10 ) 
+insert into purchaseTransaction values('PUR012', ( select StaffID from Staff Where StaffID = 'STF012'), 
+	(select IngredientID from Ingredient Where IngredientID = 'ING012'),
+	(select VendorID from Vendor Where VendorID = 'VEN012'), '2018/01/20', 1 ) 
+insert into purchaseTransaction values('PUR013', ( select StaffID from Staff Where StaffID = 'STF013'), 
+	(select IngredientID from Ingredient Where IngredientID = 'ING013'),
+	(select VendorID from Vendor Where VendorID = 'VEN013'), '2018/01/21', 14 ) 
+insert into purchaseTransaction values('PUR014', ( select StaffID from Staff Where StaffID = 'STF014'), 
+	(select IngredientID from Ingredient Where IngredientID = 'ING014'),
+	(select VendorID from Vendor Where VendorID = 'VEN014'), '2018/01/24', 18 ) 
+insert into purchaseTransaction values('PUR015', ( select StaffID from Staff Where StaffID = 'STF015'), 
+	(select IngredientID from Ingredient Where IngredientID = 'ING015'),
+	(select VendorID from Vendor Where VendorID = 'VEN015'), '2018/01/25', 16 ) 
+insert into purchaseTransaction values('PUR016', ( select StaffID from Staff Where StaffID = 'STF004'), 
+	(select IngredientID from Ingredient Where IngredientID = 'ING004'),
+	(select VendorID from Vendor Where VendorID = 'VEN001'), '2018/01/26', 3 ) 
+insert into purchaseTransaction values('PUR017', ( select StaffID from Staff Where StaffID = 'STF008'), 
+	(select IngredientID from Ingredient Where IngredientID = 'ING001'),
+	(select VendorID from Vendor Where VendorID = 'VEN004'), '2018/01/27', 14 ) 
+insert into purchaseTransaction values('PUR018', ( select StaffID from Staff Where StaffID = 'STF001'), 
+	(select IngredientID from Ingredient Where IngredientID = 'ING013'),
+	(select VendorID from Vendor Where VendorID = 'VEN006'), '2018/01/28', 17 ) 
+insert into purchaseTransaction values('PUR019', ( select StaffID from Staff Where StaffID = 'STF014'), 
+	(select IngredientID from Ingredient Where IngredientID = 'ING006'),
+	(select VendorID from Vendor Where VendorID = 'VEN012'), '2018/01/29', 19 ) 
+insert into purchaseTransaction values('PUR020', ( select StaffID from Staff Where StaffID = 'STF007'), 
+	(select IngredientID from Ingredient Where IngredientID = 'ING009'),
+	(select VendorID from Vendor Where VendorID = 'VEN015'), '2018/01/30', 15 )
+
+delete  from purchaseTransaction
+
+
+-- nomer 4
+--insert name 
+insert into purchaseTransaction values('PUR021', (select StaffID from Staff Where StaffName = 'Giri'), 
+	(select IngredientID from Ingredient Where IngredientName = 'chili sauce'),
+	(select VendorID from Vendor Where VendorName = 'Aneka Makmur'), '2018/02/01', 2 )
+
+	
+insert into purchaseTransaction values('PUR022', (select StaffID from Staff Where StaffName = 'Kaleb'), 
+	(select IngredientID from Ingredient Where IngredientName = 'onion'),
+	(select VendorID from Vendor Where VendorName = 'PT Pangansari Utama Food'), '2018/02/02', 12 )
+
+	
+insert into purchaseTransaction values('PUR023', (select StaffID from Staff Where StaffName = 'Ekho'), 
+	(select IngredientID from Ingredient Where IngredientName = 'tomato sauce'),
+	(select VendorID from Vendor Where VendorName = 'PD Betani'), '2018/02/04', 14 )
+
+	
+insert into purchaseTransaction values('PUR024', (select StaffID from Staff Where StaffName = 'Topan'), 
+	(select IngredientID from Ingredient Where IngredientName = 'bun'),
+	(select VendorID from Vendor Where VendorName = 'PT Kiat Sukses'), '2018/02/05', 20 )
+
+	
+insert into purchaseTransaction values('PUR025', (select StaffID from Staff Where StaffName = 'Patrick'), 
+	(select IngredientID from Ingredient Where IngredientName = 'chili'),
+	(select VendorID from Vendor Where VendorName = 'PT Tata Adhis Thana'), '2018/02/07', 4 )
+
+	select * from purchaseTransaction
+--update 
 
