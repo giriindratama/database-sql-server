@@ -227,36 +227,46 @@ as
 	select * from Product
 
 	--insert salestransaction
-	Insert Into SalesTransaction values('SAL001',(Select StaffID from Staff where StaffID = 'STF014'),(Select ProductID from Product where ProductID = 'PRO002'),
-	(Select CustomerID from Customer where CustomerID = 'CUS001'),'2018/03/22',3)
+	Insert Into SalesTransaction values('SAL001',(Select StaffID from Staff where StaffID = 'STF001'),(Select ProductID from Product where ProductID = 'PRO002'),
+	(Select CustomerID from Customer where CustomerID = 'CUS001'),'2018/01/01',3)
 	Insert Into SalesTransaction values('SAL002',(Select StaffID from Staff where StaffID = 'STF001'),(Select ProductID from Product where ProductID = 'PRO001'),
-	(Select CustomerID from Customer where CustomerID = 'CUS002'),'2018/03/27',3)
-	Insert Into SalesTransaction values('SAL003',(Select StaffID from Staff where StaffID = 'STF014'),(Select ProductID from Product where ProductID = 'PRO003'),
-	(Select CustomerID from Customer where CustomerID = 'CUS003'),'2018/03/21',3)
-	Insert Into SalesTransaction values('SAL004',(Select StaffID from Staff where StaffID = 'STF014'),(Select ProductID from Product where ProductID = 'PRO004'),
-	(Select CustomerID from Customer where CustomerID = 'CUS004'),'2018/03/19',3)
-	Insert Into SalesTransaction values('SAL005',(Select StaffID from Staff where StaffID = 'STF014'),(Select ProductID from Product where ProductID = 'PRO005'),
-	(Select CustomerID from Customer where CustomerID = 'CUS005'),'2018/01/09',1)
-	Insert Into SalesTransaction values('SAL006',(Select StaffID from Staff where StaffID = 'STF014'),(Select ProductID from Product where ProductID = 'PRO006'),
-	(Select CustomerID from Customer where CustomerID = 'CUS006'),'2018/02/12',2)
-	Insert Into SalesTransaction values('SAL007',(Select StaffID from Staff where StaffID = 'STF014'),(Select ProductID from Product where ProductID = 'PRO007'),
-	(Select CustomerID from Customer where CustomerID = 'CUS007'),'2018/06/12',2)
-	Insert Into SalesTransaction values('SAL008',(Select StaffID from Staff where StaffID = 'STF014'),(Select ProductID from Product where ProductID = 'PRO008'),
-	(Select CustomerID from Customer where CustomerID = 'CUS008'),'2018/04/12',2)
-	Insert Into SalesTransaction values('SAL009',(Select StaffID from Staff where StaffID = 'STF014'),(Select ProductID from Product where ProductID = 'PRO009'),
-	(Select CustomerID from Customer where CustomerID = 'CUS009'),'2018/03/15',5)
-	Insert Into SalesTransaction values('SAL010',(Select StaffID from Staff where StaffID = 'STF014'),(Select ProductID from Product where ProductID = 'PRO010'),
-	(Select CustomerID from Customer where CustomerID = 'CUS010'),'2018/03/14',1)
-	Insert Into SalesTransaction values('SAL011',(Select StaffID from Staff where StaffID = 'STF014'),(Select ProductID from Product where ProductID = 'PRO011'),
-	(Select CustomerID from Customer where CustomerID = 'CUS011'),'2018/03/09',1)
-	Insert Into SalesTransaction values('SAL012',(Select StaffID from Staff where StaffID = 'STF014'),(Select ProductID from Product where ProductID = 'PRO012'),
-	(Select CustomerID from Customer where CustomerID = 'CUS012'),'2018/03/01',2)
-	Insert Into SalesTransaction values('SAL013',(Select StaffID from Staff where StaffID = 'STF014'),(Select ProductID from Product where ProductID = 'PRO013'),
-	(Select CustomerID from Customer where CustomerID = 'CUS013'),'2018/03/02',4)
-	Insert Into SalesTransaction values('SAL014',(Select StaffID from Staff where StaffID = 'STF014'),(Select ProductID from Product where ProductID = 'PRO014'),
-	(Select CustomerID from Customer where CustomerID = 'CUS014'),'2018/03/03',5)
-	Insert Into SalesTransaction values('SAL015',(Select StaffID from Staff where StaffID = 'STF014'),(Select ProductID from Product where ProductID = 'PRO015'),
-	(Select CustomerID from Customer where CustomerID = 'CUS015'),'2018/03/05',1)
+	(Select CustomerID from Customer where CustomerID = 'CUS002'),'2018/01/03',3)
+	Insert Into SalesTransaction values('SAL003',(Select StaffID from Staff where StaffID = 'STF001'),(Select ProductID from Product where ProductID = 'PRO003'),
+	(Select CustomerID from Customer where CustomerID = 'CUS003'),'2018/01/03',3)
+	Insert Into SalesTransaction values('SAL004',(Select StaffID from Staff where StaffID = 'STF001'),(Select ProductID from Product where ProductID = 'PRO004'),
+	(Select CustomerID from Customer where CustomerID = 'CUS004'),'2018/01/03',3)
+	Insert Into SalesTransaction values('SAL005',(Select StaffID from Staff where StaffID = 'STF001'),(Select ProductID from Product where ProductID = 'PRO005'),
+	(Select CustomerID from Customer where CustomerID = 'CUS005'),'2018/01/03',1)
+	Insert Into SalesTransaction values('SAL006',(Select StaffID from Staff where StaffID = 'STF004'),(Select ProductID from Product where ProductID = 'PRO006'),
+	(Select CustomerID from Customer where CustomerID = 'CUS006'),'2018/01/04',2)
+	Insert Into SalesTransaction values('SAL007',(Select StaffID from Staff where StaffID = 'STF004'),(Select ProductID from Product where ProductID = 'PRO007'),
+	(Select CustomerID from Customer where CustomerID = 'CUS007'),'2018/01/04',2)
+	Insert Into SalesTransaction values('SAL008',(Select StaffID from Staff where StaffID = 'STF004'),(Select ProductID from Product where ProductID = 'PRO008'),
+	(Select CustomerID from Customer where CustomerID = 'CUS008'),'2018/01/04',2)
+	Insert Into SalesTransaction values('SAL009',(Select StaffID from Staff where StaffID = 'STF004'),(Select ProductID from Product where ProductID = 'PRO009'),
+	(Select CustomerID from Customer where CustomerID = 'CUS009'),'2018/01/04',5)
+	Insert Into SalesTransaction values('SAL010',(Select StaffID from Staff where StaffID = 'STF004'),(Select ProductID from Product where ProductID = 'PRO010'),
+	(Select CustomerID from Customer where CustomerID = 'CUS010'),'2018/01/05',1)
+	Insert Into SalesTransaction values('SAL011',(Select StaffID from Staff where StaffID = 'STF007'),(Select ProductID from Product where ProductID = 'PRO011'),
+	(Select CustomerID from Customer where CustomerID = 'CUS011'),'2018/01/05',1)
+	Insert Into SalesTransaction values('SAL012',(Select StaffID from Staff where StaffID = 'STF007'),(Select ProductID from Product where ProductID = 'PRO012'),
+	(Select CustomerID from Customer where CustomerID = 'CUS012'),'2018/01/05',2)
+	Insert Into SalesTransaction values('SAL013',(Select StaffID from Staff where StaffID = 'STF007'),(Select ProductID from Product where ProductID = 'PRO013'),
+	(Select CustomerID from Customer where CustomerID = 'CUS013'),'2018/01/05',4)
+	Insert Into SalesTransaction values('SAL014',(Select StaffID from Staff where StaffID = 'STF007'),(Select ProductID from Product where ProductID = 'PRO014'),
+	(Select CustomerID from Customer where CustomerID = 'CUS014'),'2018/01/05',5)
+	Insert Into SalesTransaction values('SAL015',(Select StaffID from Staff where StaffID = 'STF007'),(Select ProductID from Product where ProductID = 'PRO015'),
+	(Select CustomerID from Customer where CustomerID = 'CUS0015'),'2018/01/06',2)
+	Insert Into SalesTransaction values('SAL016',(Select StaffID from Staff where StaffID = 'STF007'),(Select ProductID from Product where ProductID = 'PRO015'),
+	(Select CustomerID from Customer where CustomerID = 'CUS014'),'2018/01/06',1)
+	Insert Into SalesTransaction values('SAL017',(Select StaffID from Staff where StaffID = 'STF007'),(Select ProductID from Product where ProductID = 'PRO015'),
+	(Select CustomerID from Customer where CustomerID = 'CUS012'),'2018/01/06',4)
+	Insert Into SalesTransaction values('SAL018',(Select StaffID from Staff where StaffID = 'STF007'),(Select ProductID from Product where ProductID = 'PRO015'),
+	(Select CustomerID from Customer where CustomerID = 'CUS005'),'2018/01/06',2)
+	Insert Into SalesTransaction values('SAL019',(Select StaffID from Staff where StaffID = 'STF007'),(Select ProductID from Product where ProductID = 'PRO015'),
+	(Select CustomerID from Customer where CustomerID = 'CUS006'),'2018/01/06',1)
+	Insert Into SalesTransaction values('SAL020',(Select StaffID from Staff where StaffID = 'STF007'),(Select ProductID from Product where ProductID = 'PRO015'),
+	(Select CustomerID from Customer where CustomerID = 'CUS004'),'2018/01/06',1)
 	
 	select * from Customer
 
@@ -352,5 +362,9 @@ insert into purchaseTransaction values('PUR025', (select StaffID from Staff Wher
 	(select VendorID from Vendor Where VendorName = 'PT Tata Adhis Thana'), '2018/02/07', 4 )
 
 	select * from purchaseTransaction
---update 
 
+Insert Into SalesTransaction values('SAL0',(Select StaffID from Staff where StaffID = 'STF014'),(Select ProductID from Product where ProductID = 'PRO015'),
+	(Select CustomerID from Customer where CustomerID = 'CUS015'),'2018/03/05',1)
+	
+Insert Into SalesTransaction values('SAL020',(Select StaffID from Staff where StaffName = 'Giri'),(Select ProductID from Product where ProductName = ''),
+	(Select CustomerID from Customer where CustomerID = 'CUS004'),'2018/01/06',1)
