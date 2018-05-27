@@ -136,7 +136,7 @@ as
 	
 -- insert Customer
 go
-	create procedure insertingcustomer
+	create procedure insertCustomer
 @custid varchar(10),
 @custaddress varchar(50),
 @custname varchar(30),
@@ -150,23 +150,24 @@ as
 		print 'success'
 	end
 
-	exec insertingcustomer 'CUS001','Jalan hope valley','Jacob seed','1970-04-02',087658376767,'underbos1@gmail.co.id'
-	exec insertingcustomer 'CUS002','Jalan montana valley','Joseph seed','1972-04-02',08765887878787,'bos1@gmail.co.id'
-	exec insertingcustomer 'CUS003','Jalan norhtern valley','John seed','1986-04-02',087658376576,'underbos2@gmail.co.id'
-	exec insertingcustomer 'CUS004','Jalan hope valley 2','Faith','1992-04-02',0876589987966,'underbos3@gmail.co.id'
-	exec insertingcustomer 'CUS005','Jalan norhtern kyrat','ajay ghale','1982-04-02',0876589090090,'palay1@gmail.co.id'
-	exec insertingcustomer 'CUS006','Jalan southern kyrat','Pagan min','1960-04-02',08765839806987,'bos1@gmail.co.id'
-	exec insertingcustomer 'CUS007','Jalan Kemang raya 2','Joko susanto','1970-05-02',0876583456764,'joko@gmail.co.id'
-	exec insertingcustomer 'CUS008','Jalan Kemang raya 3','habib habibu','1948-12-02',08765887988766,'habibers1@gmail.co.id'
-	exec insertingcustomer 'CUS009','Jalan Kemang raya 4','Yanny sumanti','1970-04-02',0876598098097,'yanny1@gmail.co.id'
-	exec insertingcustomer 'CUS010','Jalan Kemang raya 5','Laurel','1970-04-02',087658309807,'laurel1@gmail.co.id'
-	exec insertingcustomer 'CUS011','Jalan greenville 1','samuel l jackson','1948-04-02',0876580080987,'nickfury@gmail.co.id'
-	exec insertingcustomer 'CUS012','Jalan greenville 2','Keith david','1970-04-02',087658098099709,'Keithdavid@gmail.co.id'
-	exec insertingcustomer 'CUS013','Jalan greenville 3','ian gallagher','1991-04-02',087658398798098,'iangall@gmail.co.id'
-	exec insertingcustomer 'CUS014','Jalan greenville 4','lip gallagher','1993-04-02',0876583987759,'lipshameless@gmail.co.id'
-	exec insertingcustomer 'CUS015','Jalan greenville 5','carl gallagher','1999-04-02',0876583749869587,'carlls@gmail.co.id'
+	exec insertCustomer 'CUS001','Jalan hope valley','Jacob seed','1970-04-02',087658376767,'underbos1@gmail.co.id'
+	exec insertCustomer 'CUS002','Jalan montana valley','Onani waee','1972-04-02',08765887878787,'bos1@gmail.co.id'
+	exec insertCustomer 'CUS003','Jalan norhtern valley','Situ Soppoep','1986-04-02',087658376576,'underbos2@gmail.co.id'
+	exec insertCustomer 'CUS004','Jalan hope valley 2','Faith','1992-04-02',0876589987966,'underbos3@gmail.co.id'
+	exec insertCustomer 'CUS005','Jalan norhtern kyrat','ajay ghale','1982-04-02',0876589090090,'palay1@gmail.co.id'
+	exec insertCustomer 'CUS006','Jalan southern kyrat','Pagan min','1960-04-02',08765839806987,'bos1@gmail.co.id'
+	exec insertCustomer 'CUS007','Jalan Kemang raya 2','Joko susanto','1970-05-02',0876583456764,'joko@gmail.co.id'
+	exec insertCustomer 'CUS008','Jalan Kemang raya 3','habib habibu','1948-12-02',08765887988766,'habibers1@gmail.co.id'
+	exec insertCustomer 'CUS009','Jalan Kemang raya 4','Yanny sumanti','1970-04-02',0876598098097,'yanny1@gmail.co.id'
+	exec insertCustomer 'CUS010','Jalan Kemang raya 5','Laurel','1970-04-02',087658309807,'laurel1@gmail.co.id'
+	exec insertCustomer 'CUS011','Jalan greenville 1','samuel l jackson','1948-04-02',0876580080987,'nickfury@gmail.co.id'
+	exec insertCustomer 'CUS012','Jalan greenville 2','Keith david','1970-04-02',087658098099709,'Keithdavid@gmail.co.id'
+	exec insertCustomer 'CUS013','Jalan greenville 3','ian gallagher','1991-04-02',087658398798098,'iangall@gmail.co.id'
+	exec insertCustomer 'CUS014','Jalan greenville 4','lip gallagher','1993-04-02',0876583987759,'lipshameless@gmail.co.id'
+	exec insertCustomer 'CUS015','Jalan greenville 5','carl gallagher','1999-04-02',0876583749869587,'carlls@gmail.co.id'
 
 	select * from Customer
+	delete from Customer
 
 
 -- insert productType
@@ -256,7 +257,7 @@ as
 	Insert Into SalesTransaction values('SAL014',(Select StaffID from Staff where StaffID = 'STF007'),(Select ProductID from Product where ProductID = 'PRO014'),
 	(Select CustomerID from Customer where CustomerID = 'CUS014'),'2018/01/05',5)
 	Insert Into SalesTransaction values('SAL015',(Select StaffID from Staff where StaffID = 'STF007'),(Select ProductID from Product where ProductID = 'PRO015'),
-	(Select CustomerID from Customer where CustomerID = 'CUS0015'),'2018/01/06',2)
+	(Select CustomerID from Customer where CustomerID = 'CUS015'),'2018/01/06',2)
 	Insert Into SalesTransaction values('SAL016',(Select StaffID from Staff where StaffID = 'STF007'),(Select ProductID from Product where ProductID = 'PRO015'),
 	(Select CustomerID from Customer where CustomerID = 'CUS014'),'2018/01/06',1)
 	Insert Into SalesTransaction values('SAL017',(Select StaffID from Staff where StaffID = 'STF007'),(Select ProductID from Product where ProductID = 'PRO015'),
@@ -268,7 +269,8 @@ as
 	Insert Into SalesTransaction values('SAL020',(Select StaffID from Staff where StaffID = 'STF007'),(Select ProductID from Product where ProductID = 'PRO015'),
 	(Select CustomerID from Customer where CustomerID = 'CUS004'),'2018/01/06',1)
 	
-	select * from Customer
+	select * from SalesTransaction
+	delete from SalesTransaction
 
 -- insert purchaseTransaction
 	insert into purchaseTransaction values('PUR001', ( select StaffID from Staff Where StaffID = 'STF001'), 
@@ -363,8 +365,123 @@ insert into purchaseTransaction values('PUR025', (select StaffID from Staff Wher
 
 	select * from purchaseTransaction
 
-Insert Into SalesTransaction values('SAL0',(Select StaffID from Staff where StaffID = 'STF014'),(Select ProductID from Product where ProductID = 'PRO015'),
-	(Select CustomerID from Customer where CustomerID = 'CUS015'),'2018/03/05',1)
+
+
+Insert Into SalesTransaction values('SAL021',(Select StaffID from Staff where StaffName = 'Giri'),(Select ProductID from Product where ProductName = 'Spicy Chicken'),
+	(Select CustomerID from Customer where CustomerName = 'Jacob seed'),'2018/01/07',5)
 	
-Insert Into SalesTransaction values('SAL020',(Select StaffID from Staff where StaffName = 'Giri'),(Select ProductID from Product where ProductName = ''),
-	(Select CustomerID from Customer where CustomerID = 'CUS004'),'2018/01/06',1)
+Insert Into SalesTransaction values('SAL022',(Select StaffID from Staff where StaffName = 'Giri'),(Select ProductID from Product where ProductName = 'Jelly'),
+	(Select CustomerID from Customer where CustomerName = 'ajay ghale'),'2018/01/07',5)
+
+Insert Into SalesTransaction values('SAL023',(Select StaffID from Staff where StaffName = 'Andrew'),(Select ProductID from Product where ProductName = 'Ice cream'),
+	(Select CustomerID from Customer where CustomerName = 'lib gallagher'),'2018/01/07',2)
+
+Insert Into SalesTransaction values('SAL024',(Select StaffID from Staff where StaffName = 'Andrew'),(Select ProductID from Product where ProductName = 'Cola'),
+	(Select CustomerID from Customer where CustomerName = 'Yanny sumanti'),'2018/01/07',1)
+
+Insert Into SalesTransaction values('SAL025',(Select StaffID from Staff where StaffName = 'Andrew'),(Select ProductID from Product where ProductName = 'Rootbeer'),
+	(Select CustomerID from Customer where CustomerName = 'Laurel'),'2018/01/07',1)
+
+
+	--update
+UPDATE purchaseTransaction  
+    SET StaffID = 'STF001'  
+    WHERE QuantityIngredient = 2
+
+UPDATE purchaseTransaction
+	SET StaffID = (Select StaffID from Staff where StaffName = 'Patrick')
+	where TransactionDate = '2018/01/03'
+
+UPDATE purchaseTransaction
+	SET IngredientID = (Select IngredientID from Ingredient where IngredientPrice = 25000)
+	where TransactionDate = '2018/01/28'
+
+UPDATE purchaseTransaction
+	SET StaffID = 'STF001'
+	where VendorID = (Select VendorID from Vendor where VendorEmail LIKE '%ba%')
+
+UPDATE purchaseTransaction
+	Set VendorID = 'VEN007'
+	where TransactionDate between '2018/01/06' and '2018/01/010'
+
+
+Update SalesTransaction
+	set StaffID = 'STF012'
+	where QuantityProduct = 1
+
+Update SalesTransaction
+	set QuantityProduct = QuantityProduct + 1
+	where TransactionDate = '2018/01/06'
+
+
+Update SalesTransaction
+	set QuantityProduct = 2
+	where CustomerID = (select CustomerID from Customer where CustomerName = 'Yanny sumanti')
+
+
+Update SalesTransaction
+	set StaffID = 'STF005', CustomerID = 'CUS004' 
+	where QuantityProduct > 5
+
+Update SalesTransaction
+	set ProductID = (select ProductID from Product where ProductName = 'Rootbeer')
+	where CustomerID = (select CustomerID from Customer where CustomerName = 'Laurel')
+
+	select * from SalesTransaction
+
+--select
+select * from purchaseTransaction
+
+select * from purchaseTransaction where QuantityIngredient > 6 
+	ORDER BY TransactionDate
+
+select v.VendorName, v.VendorEmail, pt.QuantityIngredient
+	from purchaseTransaction pt join Vendor v on pt.VendorID = v.VendorID
+
+select  UPPER(LEFT(i.IngredientName,1))+LOWER(SUBSTRING(i.IngredientName,2,LEN(i.IngredientName))) as [Ingredient Name],
+	pt.QuantityIngredient as [Quantity]
+	from purchaseTransaction pt join Ingredient i 
+	on pt.IngredientID = i.IngredientID where pt.TransactionDate between  '2018/01/06' and '2018/01/20'
+	Order by pt.TransactionDate
+
+select s.StaffName as [Staff Name], v.VendorEmail as [Vendor Email], 
+	UPPER(LEFT(i.IngredientName,1))+LOWER(SUBSTRING(i.IngredientName,2,LEN(i.IngredientName))) as [Ingredient Name],
+	pt.QuantityIngredient as [Quantity]
+	from purchaseTransaction pt join Ingredient i 
+	on pt.IngredientID = i.IngredientID join Staff s on pt.StaffID = s.StaffID
+	join Vendor v on pt.VendorID = v.VendorID where pt.QuantityIngredient between 5 and 20
+	order by pt.QuantityIngredient 
+
+
+
+select * from SalesTransaction st join Staff s on st.StaffID = s.StaffID 
+
+select * 
+
+
+--nomer 5------------------------------
+
+--soal 1
+select * from Customer c join SalesTransaction s on c.CustomerID = s.CustomerID where c.customeName like 
+  '%[A-Za-z0-9][A-Za-z0-9]% %[A-Za-z0-9][A-Za-z0-9]%' and s.QuantityProduct >2
+
+-- soal 2 belum bisa
+select v.VendorID, v.VendorName, CONVERT(varchar(10),pt.QuantityIngredient) + ' purchase(s)' as [Purchase Count] from purchaseTransaction pt join Vendor v on pt.VendorID = v.VendorID join Staff s on pt.StaffID = s.StaffID
+	where v.VendorName like '%a%' and s.StaffName like '%o%' order by v.VendorID
+
+-- soal 3 ngede tingkat dewa
+	select s.StaffName, (i.IngredientPrice * pt.QuantityIngredient) as [Sum of Purchase] 
+	from purchaseTransaction pt join Staff s on pt.StaffID = s.StaffID 
+	join Ingredient i on pt.IngredientID = i.IngredientID 
+	where s.StaffID IN (select StaffID from purchaseTransaction where TransactionDate between '2018/01/01' and '2018/01/21'
+	GROUP BY StaffID Having COUNT(*) > 1) and TransactionDate between '2018/01/01' and '2018/01/21'
+
+-- soal 4
+	select 
+
+--5 subquery
+	select p.VendorID,p.StaffID,p.TransactionDate from Vendor v join purchaseTransaction p on v.VendorID = p.VendorID join Staff s on s.StaffID = p.StaffID
+ where p.StaffID like 'STF001' or p.StaffID like 'STF004' and p.QuantityIngredient < (select AVG(QuantityIngredient) from purchaseTransaction)
+	
+
+
