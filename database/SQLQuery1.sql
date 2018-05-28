@@ -462,26 +462,67 @@ select *
 --nomer 5------------------------------
 
 --soal 1
-select * from Customer c join SalesTransaction s on c.CustomerID = s.CustomerID where c.customeName like 
+select CustomeName, CustomerDOB, CustomerEmail from Customer c join SalesTransaction s on c.CustomerID = s.CustomerID where c.customeName like 
   '%[A-Za-z0-9][A-Za-z0-9]% %[A-Za-z0-9][A-Za-z0-9]%' and s.QuantityProduct >2
 
 -- soal 2 belum bisa
-select v.VendorID, v.VendorName, CONVERT(varchar(10),pt.QuantityIngredient) + ' purchase(s)' as [Purchase Count] from purchaseTransaction pt join Vendor v on pt.VendorID = v.VendorID join Staff s on pt.StaffID = s.StaffID
-	where v.VendorName like '%a%' and s.StaffName like '%o%' order by v.VendorID
+select v.VendorID, v.VendorName, CONVERT(varchar(10),pt.QuantityIngredient) + ' purchase(s)' as [Purchase Count] from purchaseTransaction pt join Vendor v on pt.VendorID = v.VendorID 
+	where v.VendorName like '%a%' and v.VendorName like '%o%' order by v.VendorID
 
 -- soal 3 ngede tingkat dewa
 	select s.StaffName, (i.IngredientPrice * pt.QuantityIngredient) as [Sum of Purchase] 
 	from purchaseTransaction pt join Staff s on pt.StaffID = s.StaffID 
 	join Ingredient i on pt.IngredientID = i.IngredientID 
-	where s.StaffID IN (select StaffID from purchaseTransaction where TransactionDate between '2018/01/01' and '2018/01/21'
-	GROUP BY StaffID Having COUNT(*) > 1) and TransactionDate between '2018/01/01' and '2018/01/21'
+	where (DATEPART(Day, pt.TransactionDate) between 1 and 21) and pt.QuantityIngredient > 1
 
--- soal 4
-	select 
+-- soal 4 manger coegg belum ada sales transaction
+	select DISTINCT  c.CustomeName from Customer c join SalesTransaction st on c.CustomerID = st.CustomerID
+	GROUP BY c.CustomeName,c.CustomerPhone
+	HAVING c.CustomerPhone LIKE('0896%') AND COUNT(c.CustomerID)>1
 
 --5 subquery
 	select p.VendorID,p.StaffID,p.TransactionDate from Vendor v join purchaseTransaction p on v.VendorID = p.VendorID join Staff s on s.StaffID = p.StaffID
  where p.StaffID like 'STF001' or p.StaffID like 'STF004' and p.QuantityIngredient < (select AVG(QuantityIngredient) from purchaseTransaction)
 	
+--6 
+select c.CustomerID, LEFT(c.CustomeName, CHARINDEX(' ', c.CustomeName+' ')-1) as [First Name], st.QuantityProduct as [Quantity]
+from SalesTransaction st join Customer c on st.CustomerID = c.CustomerID 
+where DATEPART(WEEK,st.TransactionDate)%4=1 group by c.CustomerID, c.CustomeName, st.QuantityProduct
+HAVING st.QuantityProduct > ALL (select AVG(QuantityProduct) from SalesTransaction)
 
+--7 gak ada nama depan D yoii
+select LEFT(s.StaffName, CHARINDEX(' ', s.StaffName+' ')-1) as [Staff First Name], 
+Count(pt.QuantityIngredient) as [Purchase Transaction], CONVERT(varchar(30), pt.TransactionDate) as [Transaction Date]
+ from purchaseTransaction pt join Staff s on pt.StaffID = s.StaffID join Ingredient i on pt.IngredientID = i.IngredientID
+ where s.StaffName like 'd%' and i.IngredientPrice > all (select avg(IngredientPrice) from Ingredient)
+ group by s.StaffName, pt.TransactionDate
 
+--8
+select c.CustomeName, STUFF(c.CustomerPhone,1,1,'+62') as [Customer Phone], COUNT(st.QuantityProduct) AS [Sales Count],
+CAST(SUM(st.QuantityProduct) AS VARCHAR) + '  pc(s)' AS [Quantity]
+from SalesTransaction st join Customer c on st.CustomerID = c.CustomerID
+where DATEPART(DAY, st.TransactionDate) between 1 and 10 and st.QuantityProduct > all (select AVG(QuantityProduct) from SalesTransaction)
+group by c.CustomeName, c.CustomerPhone
+
+--9 Customer hak ada lahir tanggal 2000 bang
+Create view CustomerViewer
+AS Select c.CustomerID, MAX(st.QuantityProduct) as [MAX Quantity], MIN(st.QuantityProduct) as [MIN Quantity]
+from SalesTransaction st join Customer c on st.CustomerID = c.CustomerID 
+where DATEPART(YEAR, c.CustomerDOB) = 2000 
+GROUP BY c.CustomeName,c.CustomerID
+HAVING ( MIN(st.QuantityProduct) <> MAX(st.QuantityProduct))
+
+-- 10 in aku ganteng yaa
+Create view StaffViewer 
+AS select StaffName, COUNT(pt.QuantityIngredient) AS[Total Transaction Count], s.StaffAddress
+from purchaseTransaction pt join Staff s on pt.StaffID = s.StaffID join Ingredient i on pt.IngredientID = i.IngredientID
+where s.StaffAddress like '%a%' and (pt.QuantityIngredient * i.IngredientPrice) > 20000
+GROUP BY s.StaffName, s.StaffAddress
+
+select * from StaffViewer
+/*
+SELECT DISTINCT C.CustomerName, STUFF(C.CustomerPhone,1,1,'+62') AS[CustomerPhone], SUM(S.SalesTransQuantity) AS [Sum of Quantity]
+FROM MCDCustomer C JOIN MCDSalesTransaction S
+ON C.CustomerID = S.CustomerID
+GROUP BY C.CustomerName,C.CustomerPhone
+HAVING C.CustomerPhone LIKE('0896%') AND COUNT(C.CustomerID)>1
